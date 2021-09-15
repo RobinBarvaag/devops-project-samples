@@ -13,8 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  azureSubscription: <Name of the Azure subscription>
-  appName: <Name of the Function App>
+  azureSubscription: Free Trial
+  appName: SomeKindaApp
 
 steps:
 - task: NuGetToolInstaller@1
