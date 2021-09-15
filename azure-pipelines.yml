@@ -13,8 +13,6 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  azureSubscription: Free Trial
-  appName: SomeKindaApp
 
 steps:
 - task: NuGetToolInstaller@1
@@ -35,10 +33,10 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     
-- task: AzureFunctionApp@1
-  displayName: Azure Function App Deploy
+- task: AzureRmWebAppDeployment@4
   inputs:
-    azureSubscription: $(azureSubscription)
-    appType: functionApp
-    appName: $(appName)
-    package: $(System.ArtifactsDirectory)/**/*.zip
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(7b67be29-d9db-4ba9-8091-a500459b69a4)'
+    appType: 'functionApp'
+    WebAppName: 'func-app-devops'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
